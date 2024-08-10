@@ -9,7 +9,7 @@ public class CalculatorClient {
         try {
             // Lookup the remote object from the registry
             Calculator calculator = (Calculator) Naming.lookup("rmi://localhost/CalculatorService");
-            Scanner scanner = new Scanner(System.in); // Scanner to read user input
+            Scanner scanner = new Scanner(System.in); 
             while (true) {
                 // Print menu options for the user
                 System.out.println("1. Push Value");
@@ -19,17 +19,17 @@ public class CalculatorClient {
                 System.out.println("5. Delayed Pop");
                 System.out.println("6. Exit");
                 System.out.print("Choose an option: ");
-                int choice = scanner.nextInt(); // Read the user's choice
+                int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
                         System.out.print("Enter value: ");
-                        int value = scanner.nextInt(); // Read the value to be pushed
-                        calculator.pushValue(value); // Push the value onto the stack
+                        int value = scanner.nextInt(); 
+                        calculator.pushValue(value); 
                         break;
                     case 2:
                         System.out.print("Enter operation (min, max, lcm, gcd): ");
-                        String operation = scanner.next(); // Read the operation to be pushed
-                        calculator.pushOperation(operation); // Push the operation onto the stack
+                        String operation = scanner.next(); 
+                        calculator.pushOperation(operation); 
                         break;
                     case 3:
                         try {
@@ -40,25 +40,25 @@ public class CalculatorClient {
                         }
                         break;
                     case 4:
-                        System.out.println("Is stack empty? " + calculator.isEmpty()); // Check if the stack is empty
+                        System.out.println("Is stack empty? " + calculator.isEmpty()); 
                         break;
                     case 5:
                         System.out.print("Enter delay in milliseconds: ");
-                        int millis = scanner.nextInt(); // Read the delay in milliseconds
-                        System.out.println("Popped value after delay: " + calculator.delayPop(millis)); // Delay pop and
-                                                                                                        // print the
-                                                                                                        // value
+                        int millis = scanner.nextInt(); 
+                        System.out.println("Popped value after delay: " + calculator.delayPop(millis)); 
+                                                                                                        
+                                                                                                        
                         break;
                     case 6:
-                        System.out.println("Exiting..."); // Exit the application
+                        System.out.println("Exiting..."); 
                         System.exit(0);
                     default:
-                        System.out.println("Invalid option. Try again."); // Handle invalid menu options
+                        System.out.println("Invalid option. Try again."); 
                 }
             }
         } catch (Exception e) {
-            System.err.println("Client exception: " + e.toString()); // Print any client exceptions
-            e.printStackTrace(); // Print stack trace for the exception
+            System.err.println("Client exception: " + e.toString()); 
+            e.printStackTrace(); 
         }
     }
 }
