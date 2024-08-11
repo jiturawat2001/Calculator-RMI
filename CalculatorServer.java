@@ -6,7 +6,7 @@ public class CalculatorServer {
     public static void main(String[] args) {
         try {
             // Create and export a registry on port 1099
-            LocateRegistry.createRegistry(1000);
+            LocateRegistry.createRegistry(1099);
             // Instantiate the Calculator implementation
             Calculator calculator = new CalculatorImplementation();
             // Bind the remote object's stub in the registry
