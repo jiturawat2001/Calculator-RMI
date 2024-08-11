@@ -9,7 +9,7 @@ public class CalculatorClient {
         try {
             // Lookup the remote object from the registry
             Calculator calculator = (Calculator) Naming.lookup("rmi://localhost/CalculatorService");
-            Scanner scanner = new Scanner(System.in); 
+            Scanner scanner = new Scanner(System.in);
             while (true) {
                 // Print menu options for the user
                 System.out.println("1. Push Value");
@@ -19,12 +19,12 @@ public class CalculatorClient {
                 System.out.println("5. Delayed Pop");
                 System.out.println("6. Exit");
                 System.out.print("Choose an option: ");
-                int choice = scanner.nextInt();
+                int choice = scanner.nextInt(); 
                 switch (choice) {
                     case 1:
                         System.out.print("Enter value: ");
                         int value = scanner.nextInt(); 
-                        calculator.pushValue(value); 
+                        calculator.pushValue(value);
                         break;
                     case 2:
                         System.out.print("Enter operation (min, max, lcm, gcd): ");
@@ -53,7 +53,7 @@ public class CalculatorClient {
                         System.out.println("Exiting..."); 
                         System.exit(0);
                     default:
-                        System.out.println("Invalid option. Try again."); 
+                        System.out.println("Invalid option. Try again.");
                 }
             }
         } catch (Exception e) {

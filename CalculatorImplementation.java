@@ -3,19 +3,22 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Stack;
 
+
 public class CalculatorImplementation extends UnicastRemoteObject implements Calculator {
-    private Stack<Integer> stack; 
+    private Stack<Integer> stack; // Stack to hold integer values
 
     protected CalculatorImplementation() throws RemoteException {
         stack = new Stack<>();
     }
 
+    
     @Override
     public synchronized void pushValue(int val) throws RemoteException {
         stack.push(val);
         System.out.println("Pushed value: " + val);
     }
 
+    
     @Override
     public synchronized void pushOperation(String operator) throws RemoteException {
         if (stack.isEmpty()) {
@@ -28,13 +31,13 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
             int value = stack.pop(); 
             switch (operator) {
                 case "min":
-                    result = Math.min(result, value);
+                    result = Math.min(result, value); 
                     break;
                 case "max":
-                    result = Math.max(result, value); 
+                    result = Math.max(result, value);
                     break;
                 case "lcm":
-                    result = lcm(result, value);
+                    result = lcm(result, value); 
                     break;
                 case "gcd":
                     result = gcd(result, value); 
@@ -47,6 +50,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
         System.out.println("Performed operation: " + operator + ", result: " + result);
     }
 
+    
     @Override
     public synchronized int pop() throws RemoteException {
         if (stack.isEmpty()) {
@@ -57,6 +61,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
         System.out.println("Popped value: " + value);
         return value;
     }
+
 
     @Override
     public synchronized boolean isEmpty() throws RemoteException {
@@ -87,6 +92,13 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
         }
         return a;
     }
+
+    /**
+     * Computes the least common multiple of two integers.
+     * @param a the first integer.
+     * @param b the second integer.
+     * @return the least common multiple of a and b.
+     */
     private int lcm(int a, int b) {
         return (a * b) / gcd(a, b);
     }

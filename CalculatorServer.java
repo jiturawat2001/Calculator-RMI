@@ -11,7 +11,7 @@ public class CalculatorServer {
             Calculator calculator = new CalculatorImplementation();
             // Bind the remote object's stub in the registry
             Naming.rebind("CalculatorService", calculator);
-            System.out.println("Calculator Server is ready.");
+            System.out.println("Calculator Server is ready."); 
         } catch (Exception e) {
             System.err.println("Server exception: " + e.toString()); 
             e.printStackTrace(); 
